@@ -27,20 +27,30 @@ interface PatientFormProps {
   onBack: () => void
 }
 
+const UAE_PREFIXES = ["50", "52", "54", "55", "56", "58"];
+
 export function PatientForm({ doctor, date, timeSlot, onSubmit, onBack }: PatientFormProps) {
   const [fullName, setFullName] = useState("")
-  const [mobile, setMobile] = useState("")
+  const [prefix, setPrefix] = useState(UAE_PREFIXES[0])
+  const [mobileRest, setMobileRest] = useState("")
   const [description, setDescription] = useState("")
   const [isSubmitting, setIsSubmitting] = useState(false)
   const [error, setError] = useState<string | null>(null)
 
+  const handleMobileRestChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const value = e.target.value.replace(/\D/g, "").slice(0, 7)
+    setMobileRest(value)
+  }
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
 
-    if (!fullName.trim() || !mobile.trim()) {
-      setError("Please fill in all required fields")
+    if (!fullName.trim() || !mobileRest.trim() || mobileRest.length !== 7) {
+      setError("Please enter a valid UAE mobile number")
       return
     }
+
+    const mobile = `+971${prefix}${mobileRest}`
 
     try {
       setIsSubmitting(true)
@@ -118,15 +128,32 @@ export function PatientForm({ doctor, date, timeSlot, onSubmit, onBack }: Patien
               <Phone className="h-4 w-4 text-primary" />
               Mobile Number *
             </Label>
-            <Input
-              id="mobile"
-              type="tel"
-              value={mobile}
-              onChange={(e) => setMobile(e.target.value)}
-              placeholder="+971XXXXXXXXX"
-              required
-              className="h-12 text-base shadow-sm focus:shadow-md transition-shadow"
-            />
+            <div className="flex gap-2 items-center">
+              <span className="h-12 flex items-center px-2 bg-muted text-base rounded-l-md border border-input border-r-0 select-none">+971</span>
+              <select
+                value={prefix}
+                onChange={e => setPrefix(e.target.value)}
+                className="h-12 text-base bg-muted px-2 border-none outline-none focus:outline-none focus-visible:ring-2 focus-visible:ring-primary"
+                aria-label="UAE Mobile Prefix"
+              >
+                {UAE_PREFIXES.map(p => (
+                  <option key={p} value={p}>{p}</option>
+                ))}
+              </select>
+              <Input
+                id="mobile-rest"
+                type="tel"
+                value={mobileRest}
+                onChange={handleMobileRestChange}
+                placeholder="1234567"
+                required
+                minLength={7}
+                maxLength={7}
+                className="h-12 w-32 text-base shadow-sm focus:shadow-md transition-shadow border-l-0 rounded-l-none"
+                pattern="[0-9]{7}"
+              />
+            </div>
+         
           </div>
 
           <div className="space-y-2">

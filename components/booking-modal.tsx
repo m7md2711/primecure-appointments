@@ -72,6 +72,7 @@ export function BookingModal({ doctor, onClose }: BookingModalProps) {
   return (
     <Dialog open onOpenChange={onClose}>
       <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
+        <div className="">
         <DialogHeader>
           <DialogTitle className="text-2xl">
             {step === "confirmation" ? "Appointment Confirmed" : `Book Appointment with Dr. ${doctor.Name}`}
@@ -102,6 +103,7 @@ export function BookingModal({ doctor, onClose }: BookingModalProps) {
         {step === "confirmation" && appointmentData && (
           <ConfirmationView doctor={doctor} appointmentData={appointmentData} onClose={onClose} />
         )}
+        </div>
       </DialogContent>
     </Dialog>
   )

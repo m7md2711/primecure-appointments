@@ -42,7 +42,7 @@ export function ConfirmationView({ doctor, appointmentData, onClose }: Confirmat
       <!DOCTYPE html>
       <html>
         <head>
-          <title>PrimeCure Appointment Confirmation</title>
+          <title>Prima Cure Medical Center - Appointment</title>
           <style>
             body {
               font-family: Arial, sans-serif;
@@ -50,29 +50,10 @@ export function ConfirmationView({ doctor, appointmentData, onClose }: Confirmat
               max-width: 800px;
               margin: 0 auto;
             }
-            .header {
-              color: #2B4170;
-              font-size: 32px;
-              font-weight: bold;
-              margin-bottom: 10px;
-            }
-            .title {
-              font-size: 20px;
-              font-weight: bold;
-              margin-bottom: 30px;
-              color: #C9A961;
-            }
-            .section-title {
-              font-size: 16px;
-              font-weight: bold;
-              margin-top: 30px;
-              margin-bottom: 15px;
-              color: #2B4170;
-            }
-            .detail-row {
-              margin-bottom: 12px;
-              line-height: 1.6;
-            }
+            .header { color: #2B4170; font-size: 24px; font-weight: 800; margin-bottom: 8px; }
+            .title { font-size: 16px; font-weight: 700; margin-bottom: 20px; color: #C9A961; }
+            .section-title { font-size: 14px; font-weight: 700; margin: 20px 0 10px; color: #2B4170; }
+            .detail-row { margin-bottom: 10px; line-height: 1.5; }
             .label {
               font-weight: bold;
               color: #333;
@@ -95,9 +76,8 @@ export function ConfirmationView({ doctor, appointmentData, onClose }: Confirmat
           </style>
         </head>
         <body>
-          <div class="header">PrimeCure</div>
+          <div class="header">Prima Cure Medical Center</div>
           <div class="title">Appointment Confirmation</div>
-          
           <div class="section-title">Appointment Details</div>
           
           <div class="detail-row">
@@ -113,11 +93,6 @@ export function ConfirmationView({ doctor, appointmentData, onClose }: Confirmat
           <div class="detail-row">
             <span class="label">Doctor:</span>
             <span class="value">Dr. ${doctor.Name}</span>
-          </div>
-          
-          <div class="detail-row">
-            <span class="label">License:</span>
-            <span class="value">${doctor.LicenseNo}</span>
           </div>
           
           <div class="detail-row">
@@ -143,7 +118,6 @@ export function ConfirmationView({ doctor, appointmentData, onClose }: Confirmat
           
           <div class="footer">
             <p>Please arrive 15 minutes before your appointment time.</p>
-            <p>For any changes or cancellations, please contact the clinic.</p>
           </div>
           
           <script>
@@ -201,7 +175,7 @@ export function ConfirmationView({ doctor, appointmentData, onClose }: Confirmat
           </div>
           <div className="flex-1">
             <p className="text-sm text-muted-foreground mb-1">Doctor</p>
-            <p className="font-semibold text-base text-foreground">{doctor.Name}</p>
+            <p className="font-semibold text-base text-foreground">Dr. {doctor.Name}</p>
           </div>
         </div>
 
