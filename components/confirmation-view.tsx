@@ -112,7 +112,7 @@ export function ConfirmationView({ doctor, appointmentData, onClose }: Confirmat
           
           <div class="detail-row">
             <span class="label">Doctor:</span>
-            <span class="value">${doctor.Name}</span>
+            <span class="value">Dr. ${doctor.Name}</span>
           </div>
           
           <div class="detail-row">

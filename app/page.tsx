@@ -70,7 +70,7 @@ export default function AppointmentsPage() {
             <div className="flex items-center gap-3 sm:gap-4 animate-in fade-in slide-in-from-left duration-500">
               <div className="relative h-20 w-20 sm:h-24 sm:w-24 lg:h-28 lg:w-28 flex-shrink-0">
                 <Image
-                  src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/image-LjfqKls7FLQijcDFIgzKAwBLXQEYmZ.png"
+                  src="/images/prima-cure-logo.png"
                   alt="Prima Cure Medical Center Logo"
                   fill
                   className="object-contain"

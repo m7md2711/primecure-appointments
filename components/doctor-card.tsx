@@ -35,7 +35,7 @@ export function DoctorCard({ doctor, onBook }: DoctorCardProps) {
         ) : (
           <div className="flex items-center justify-center h-full">
             <div className="h-24 w-24 sm:h-28 sm:w-28 rounded-full bg-primary/10 flex items-center justify-center group-hover:scale-110 transition-transform duration-300">
-              <User className="h-12 w-12 sm:h-14 sm:w-14 text-primary" />
+              <User className="h-12 w-12 sm:h-14 sm:w-14" style={{ color: '#183153' }} />
             </div>
           </div>
         )}
@@ -43,7 +43,7 @@ export function DoctorCard({ doctor, onBook }: DoctorCardProps) {
       </div>
       <CardContent className="p-5 sm:p-6">
         <h3 className="font-bold text-base sm:text-lg text-foreground mb-3 line-clamp-2 min-h-[3.5rem] group-hover:text-primary transition-colors">
-          {doctor.Name}
+          Dr. {doctor.Name}
         </h3>
         <p className="text-sm text-muted-foreground mb-5 flex items-center gap-2">
           <span className="h-1.5 w-1.5 rounded-full bg-primary" />

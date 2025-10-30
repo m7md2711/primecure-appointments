@@ -10,7 +10,9 @@ interface DateSelectorProps {
 }
 
 export function DateSelector({ onSelectDate }: DateSelectorProps) {
-  const [date, setDate] = useState<Date | undefined>(undefined)
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  const [date, setDate] = useState<Date | undefined>(today);
 
   const handleSelect = (selectedDate: Date | undefined) => {
     setDate(selectedDate)
@@ -22,9 +24,9 @@ export function DateSelector({ onSelectDate }: DateSelectorProps) {
     }
   }
 
-  const tomorrow = new Date()
-  tomorrow.setDate(tomorrow.getDate() + 1)
-  tomorrow.setHours(0, 0, 0, 0)
+  // Allow booking from today onward
+  const minDate = new Date();
+  minDate.setHours(0, 0, 0, 0);
 
   return (
     <div className="space-y-6 animate-in fade-in slide-in-from-bottom duration-500">
@@ -35,20 +37,19 @@ export function DateSelector({ onSelectDate }: DateSelectorProps) {
           </div>
           <h3 className="text-xl font-bold text-foreground">Select Appointment Date</h3>
         </div>
-        <p className="text-sm text-muted-foreground mb-6">Choose a date for your appointment (future dates only)</p>
+        <p className="text-sm text-muted-foreground mb-6">Choose a date for your appointment</p>
         <div className="flex justify-center">
           <Calendar
             mode="single"
             selected={date}
             onSelect={handleSelect}
-            disabled={(date) => date < tomorrow}
+            disabled={(date) => date < minDate}
             className="rounded-xl border shadow-lg bg-card p-4"
           />
         </div>
       </div>
       <Button
         onClick={handleContinue}
-        disabled={!date}
         className="w-full h-14 bg-secondary hover:bg-secondary/90 text-secondary-foreground font-semibold text-base shadow-md hover:shadow-lg transition-all duration-300 disabled:opacity-50"
       >
         Continue

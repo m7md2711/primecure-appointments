@@ -74,7 +74,7 @@ export function BookingModal({ doctor, onClose }: BookingModalProps) {
       <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
         <DialogHeader>
           <DialogTitle className="text-2xl">
-            {step === "confirmation" ? "Appointment Confirmed" : `Book Appointment with ${doctor.Name}`}
+            {step === "confirmation" ? "Appointment Confirmed" : `Book Appointment with Dr. ${doctor.Name}`}
           </DialogTitle>
         </DialogHeader>
 
