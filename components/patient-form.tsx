@@ -156,7 +156,7 @@ export function PatientForm({ doctor, date, timeSlot, onSubmit, onBack }: Patien
                 autoComplete="tel"
               />
             </div>
-            <small className="text-muted-foreground">UAE numbers only. Format: +971 [prefix] [7 digits]</small>
+            <small className="text-muted-foreground"></small>
           </div>
 
           <div className="space-y-2">
