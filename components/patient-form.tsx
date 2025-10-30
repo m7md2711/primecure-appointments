@@ -124,7 +124,7 @@ export function PatientForm({ doctor, date, timeSlot, onSubmit, onBack }: Patien
           </div>
 
           <div className="space-y-2">
-            <Label htmlFor="mobile" className="text-base font-semibold flex items-center gap-2">
+            <Label htmlFor="mobile-rest" className="text-base font-semibold flex items-center gap-2">
               <Phone className="h-4 w-4 text-primary" />
               Mobile Number *
             </Label>
@@ -143,6 +143,7 @@ export function PatientForm({ doctor, date, timeSlot, onSubmit, onBack }: Patien
               <Input
                 id="mobile-rest"
                 type="tel"
+                inputMode="numeric"
                 value={mobileRest}
                 onChange={handleMobileRestChange}
                 placeholder="1234567"
@@ -151,9 +152,11 @@ export function PatientForm({ doctor, date, timeSlot, onSubmit, onBack }: Patien
                 maxLength={7}
                 className="h-12 w-32 text-base shadow-sm focus:shadow-md transition-shadow border-l-0 rounded-l-none"
                 pattern="[0-9]{7}"
+                aria-invalid={mobileRest.length !== 7}
+                autoComplete="tel"
               />
             </div>
-         
+            <small className="text-muted-foreground">UAE numbers only. Format: +971 [prefix] [7 digits]</small>
           </div>
 
           <div className="space-y-2">
